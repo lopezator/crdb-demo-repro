@@ -1,0 +1,23 @@
+version: "3.4"
+
+services:
+  cockroach:
+    image: cockroachdb/cockroach:v21.2.9
+    command: start-single-node --insecure
+
+  cockroach-demo:
+    image: cockroachdb/cockroach:v21.2.9
+    command: demo --no-example-database
+    stdin_open: true
+    tty: true
+
+  cockroach-demo-insecure:
+    image: cockroachdb/cockroach:v21.2.9
+    command: demo --no-example-database --insecure
+    stdin_open: true
+    tty: true
+
+  client:
+    build: .
+    stdin_open: true
+    tty: true
